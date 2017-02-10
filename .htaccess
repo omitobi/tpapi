@@ -1,0 +1,12 @@
+#<IfModule mod_rewrite.c>
+#    RewriteEngine On
+#    RewriteRule ^homer$ home.html [NC]
+#    RewriteCond %{REQUEST_FILENAME} !-f
+#    RewriteCond %{REQUEST_FILENAME} !-d
+#    RewriteRule ^maker/(.*)$ api.php?request=$1 [QSA,NC,L]
+#</IfModule>
+#RewriteEngine on
+
+#RewriteRule ^(.+)\.php$ /$1 [R,L]
+#RewriteCond %{REQUEST_FILENAME}.php -f
+#RewriteRule ^(.*?)/?$ /$1.php [NC,END]
