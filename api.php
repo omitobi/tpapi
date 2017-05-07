@@ -29,10 +29,10 @@ if (!array_key_exists('HTTP_ORIGIN', $_SERVER)) {
 try {
     echo json_encode(array("returned" => array("status" => "reached here", "request" => $_REQUEST['request'], "origin" => $_SERVER['HTTP_ORIGIN'])));
     $mylog->logIt(LOG_NOTICE, "Right before API callS");
-    $API = new MyAPI($_REQUEST['request'], $_SERVER['HTTP_ORIGIN']);
+//    $API = new MyAPI($_REQUEST['request'], $_SERVER['HTTP_ORIGIN']);
     $mylog->logIt(LOG_NOTICE, "Something not working after API callS");
     echo json_encode(array("status" => "reached here"));
-    echo $API->processAPI();
+//    echo $API->processAPI();
     echo json_encode(array("status" => "reached here"));
 } catch (Exception $e) {
     echo json_encode(Array('error' => $e->getMessage()));

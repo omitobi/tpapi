@@ -1,8 +1,10 @@
 <?php
-$output=shell_exec('cat /var/log/syslog | grep myapi');
-$months = array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct"."Nov","Dec");
-$output = $output."";
+//$output=shell_exec('cat /var/log/syslog | grep myapi');
+$op = shell_exec('cat /Applications/MAMP/htdocs/issuesminer/storage/logs/lumen.log | grep lumen');
 
+$months = array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct"."Nov","Dec");
+$op = $op."";
+$output = substr( $op, strlen($output)-10000 );
 //foreach ($months as $month){
 //    $newlog = explode($output,$month) ;
 //}
@@ -29,10 +31,15 @@ function str_replace_json($search, $replace, $subject){
 
 }
 
-foreach($months as $mnt) {
-    if (strpos($output,$mnt) !== false ) {
-        $string .= str_replace_json($mnt, "<br>$mnt", $output);
+//foreach($months as $mnt) {
+    if (strpos($output,'[2017-') !== false ) {
+
+        $string =  str_replace('[2017-',"<br>[2017-", $output);
+//        $string .= str_replace_json('[2017-', "<br>[2017-", $output);
     }
-}
-echo str_replace("Crit", "<font style='color: red'>Crit</font>",$string);
-//echo $string;
+//}
+//echo  $string;
+//exit;
+
+$str .= str_replace('NOTICE', "             <font style='color: orange'>NOTICE</font>",$string);
+echo $str;
